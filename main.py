@@ -54,6 +54,7 @@ def escutar_arduino():
                     arduino.write(b'ABRIR_CANCELA\n')
                 else:
                     print("ID não autorizado.")
+                    arduino.write(b'NAO_AUTORIZADO\n')
 
 if __name__ == "__main__":
     try:

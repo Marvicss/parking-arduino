@@ -10,6 +10,7 @@ void setup() {
   pinMode(sensorPin, INPUT);
   cancela.attach(9); // Servo no pino 9
   cancela.write(0);  // Posição inicial da cancela (fechada)
+  pinMode(3, OUTPUT);
 }
 
 void loop() {
@@ -29,9 +30,15 @@ void loop() {
     comando.trim();
 
     if (comando == "ABRIR_CANCELA") {
-      cancela.write(90); // Abre cancela
-      delay(3000);       // Aguarda 3 segundos
-      cancela.write(0);  // Fecha cancela
+      cancela.write(90); 
+      delay(5000);      
+      cancela.write(0);
+    }
+
+    if (comando == "NAO_AUTORIZADO") {
+      digitalWrite(3, HIGH);
+      delay(1000); 
+      digitalWrite(3, LOW);
     }
   }
 }
